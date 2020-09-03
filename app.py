@@ -11,6 +11,7 @@ from datetime import date, datetime, timedelta
 from io import BytesIO
 import urllib
 import os,io
+import base64
 
 # appという名前でFlaskのインスタンスを作成
 PEOPLE_FOLDER = os.path.join('static', 'photo')
