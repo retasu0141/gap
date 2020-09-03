@@ -30,6 +30,7 @@ def index():
         keyword = request.form['name']
         # 今日
         today = date.today()
+        plt.clf()
 
         # 30日前
         day = today - timedelta(30)
@@ -104,13 +105,17 @@ def index():
         plt.xlabel(df['date'].name)
         plt.ylabel(keyword)
 
-        fig.savefig("static\photo\{Name}.png".format(Name=dt_now_s))
-        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], dt_now_s+".png")
+        plt.savefig(img, format='png')
+        img.seek(0)
+
+        plot_url = base64.b64encode(img.getvalue()).decode()
+
 
 
         #グラフ表示
         #plt.show()
-        return render_template('choice.html',text=text,text2=text2,text3=text3,text4=text4,img=full_filename)
+        return render_template('choice.html',text=text,text2=text2,text3=text3,text4=text4,img="data:image/png;base64,{}".format(plot_url))
+
 
 if __name__ == '__main__':
     # 作成したappを起動
