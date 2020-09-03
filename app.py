@@ -104,8 +104,8 @@ def index():
         plt.xlabel(df['date'].name)
         plt.ylabel(keyword)
 
-        fig.savefig("static\photo\img.png")
-        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'img.png')
+        fig.savefig("static\photo\"+dt_now_s+".png")
+        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], dt_now_s+".png')
 
 
         #グラフ表示
