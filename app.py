@@ -10,7 +10,7 @@ import codecs
 from datetime import date, datetime, timedelta
 from io import BytesIO
 import urllib
-import os
+import os,io
 
 # appという名前でFlaskのインスタンスを作成
 PEOPLE_FOLDER = os.path.join('static', 'photo')
@@ -96,7 +96,7 @@ def index():
         print(df['date'])
         print(df[keyword])
         '''
-
+        img = io.BytesIO()
         #グラフの作成
         fig = plt.figure()
         plt.figure(1)
